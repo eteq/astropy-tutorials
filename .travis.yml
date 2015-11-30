@@ -16,11 +16,11 @@ install:
     - source .travis/setup_environment.sh
 
 script:
-    - python prepare_deploy.py run
+    - echo "FAKE RUN"
 
 deploy:
     provider: script
-    script: INTERACTIVE=false deploy
+    script: ./deploy
     on:
         repo: eteq/astropy-tutorials
         branch: staging
