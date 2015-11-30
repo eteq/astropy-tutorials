@@ -4,6 +4,8 @@
 # GH_REMOTE=myremote ./deploy
 # to set these to something other than the default
 
+echo ALL THE WAY TO THE TOP
+
 # branches and remote for pushing to github
 : ${GH_PAGESBRANCH=gh-pages}
 : ${GH_REMOTE=origin}
