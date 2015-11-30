@@ -20,7 +20,7 @@ script:
 
 deploy:
     provider: script
-    script: INTERACTIVE=false deploy
+    script: travis_deploy
     on:
         repo: eteq/astropy-tutorials
         branch: staging
