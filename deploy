@@ -4,8 +4,6 @@
 # GH_REMOTE=myremote ./deploy
 # to set these to something other than the default
 
-echo ALL THE WAY TO THE TOP
-
 # branches and remote for pushing to github
 : ${GH_PAGESBRANCH=gh-pages}
 : ${GH_REMOTE=origin}
@@ -13,10 +11,10 @@ echo ALL THE WAY TO THE TOP
 # if not interactive, automatically "yes" things but don't show anything
 : ${INTERACTIVE=true}
 
-
 if [ "$TRAVIS" = true ] ; then
+    INTERACTIVE=false
     current_branch_name="$(git rev-parse HEAD)"
-    echo "Running deploy script on travis.  Using SHA $current_branch_name as working branch."
+    echo "Running deploy script on travis, so assuming non-interactive.  Using SHA $current_branch_name as working branch."
 else
     # get current git branch name - should throw an error if in a detached state
     current_branch_name="$(git symbolic-ref --short HEAD)"
