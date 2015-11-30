@@ -12,8 +12,13 @@
 : ${INTERACTIVE=true}
 
 
-# get current git branch name - should throw an error if in a detached state
-current_branch_name="$(git symbolic-ref --short HEAD)"
+if [ "$TRAVIS" = true ] ; then
+    current_branch_name="$(git rev-parse HEAD)"
+    echo "Running deploy script on travis.  Using SHA $current_branch_name as working branch."
+else
+    # get current git branch name - should throw an error if in a detached state
+    current_branch_name="$(git symbolic-ref --short HEAD)"
+fi
 
 giveup_message () {
     echo "\n"

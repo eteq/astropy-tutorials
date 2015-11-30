@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo UP AT THE TOP
-INTERACTIVE=false bash ./deploy
