@@ -17,3 +17,10 @@ install:
 
 script:
     - python prepare_deploy.py run
+
+deploy:
+    provider: script
+    script: INTERACTIVE=false deploy
+    on:
+        repo: eteq/astropy-tutorials
+        branch: staging
