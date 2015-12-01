@@ -10,7 +10,12 @@
 
 # if not interactive, automatically "yes" things but don't show anything
 : ${INTERACTIVE=true}
-: ${CURRENT_BRANCH_NAME="$(git symbolic-ref --short HEAD)"}
+: ${CURRENT_BRANCH_NAME="$(git symbolic-ref --quiet --short HEAD)"}
+
+if [ -z "$CURRENT_BRANCH_NAME" ]; then 
+    echo "Could not determine current branch.  Cannot continue with deployment." 
+    exit 1
+fi
 
 giveup_message () {
     echo "\n"

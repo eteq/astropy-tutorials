@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Adding deployment remote"
 git remote add deploy "https://${GH_TOKEN}@${GH_REF}"
 
 export CURRENT_BRANCH_NAME="$(git rev-parse HEAD)"
