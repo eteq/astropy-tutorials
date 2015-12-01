@@ -29,8 +29,6 @@ promptifinteractive () {
         echo $1 $2
         REPLY=$2
     fi
-    
-    return $REPLY
 }
 
 echo "*****************************************************************"
