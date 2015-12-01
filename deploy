@@ -10,7 +10,7 @@
 
 # if not interactive, automatically "yes" things but don't show anything
 : ${INTERACTIVE=true}
-: ${CURRENT_BRANCH_NAME="$(git rev-parse HEAD)"}
+: ${CURRENT_BRANCH_NAME="$(git symbolic-ref --short HEAD)"}
 
 giveup_message () {
     echo "\n"
