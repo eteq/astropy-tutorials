@@ -10,21 +10,13 @@
 
 # if not interactive, automatically "yes" things but don't show anything
 : ${INTERACTIVE=true}
-
-if [ "$TRAVIS" = true ] ; then
-    INTERACTIVE=false
-    current_branch_name="$(git rev-parse HEAD)"
-    echo "Running deploy script on travis, so assuming non-interactive.  Using SHA $current_branch_name as working branch."
-else
-    # get current git branch name - should throw an error if in a detached state
-    current_branch_name="$(git symbolic-ref --short HEAD)"
-fi
+: ${CURRENT_BRANCH_NAME="$(git rev-parse HEAD)"}
 
 giveup_message () {
     echo "\n"
     echo "You're now in an orphaned test deploy branch."
     echo "To get back to normal you can run the following:"
-    echo "    git checkout -f $current_branch_name"
+    echo "    git checkout -f $CURRENT_BRANCH_NAME"
     echo "    git clean -f"
     echo "    git branch -D $GH_PAGESBRANCH" 
 }
@@ -124,7 +116,7 @@ then
         echo "Pushing to '$GH_PAGESBRANCH' on remote '$GH_REMOTE'"
         git push -f $GH_REMOTE $GH_PAGESBRANCH
 
-        git checkout -f $current_branch_name
+        git checkout -f $CURRENT_BRANCH_NAME
         git clean -f
         git branch -D $GH_PAGESBRANCH
     else
