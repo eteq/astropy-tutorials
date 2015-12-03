@@ -1,21 +1,11 @@
 #!/bin/bash
 
 # CONDA
-conda create --yes -n test -c astropy-ci-extras python=$PYTHON_VERSION pip
-source activate test
+conda create --yes -n astropy-tutorials python=$PYTHON_VERSION astropy=$ASTROPY_VERSION
+source activate astropy-tutorials
 
-# NUMPY
-conda install --yes numpy=$NUMPY_VERSION
+# TUTORIALS/OPTIONAL DEPENDENCIES
+conda install --yes python=$PYTHON_VERSION ipython ipython-notebook runipy matplotlib scipy h5py pyyaml beautifulsoup4
 
-# Now set up shortcut to conda install command to make sure the Python and Numpy
-# versions are always explicitly specified.
-export CONDA_INSTALL="conda install --yes python=$PYTHON_VERSION numpy=$NUMPY_VERSION astropy=$ASTROPY_VERSION"
-
-# ASTROPY CORE DEPENDENCIES
-$CONDA_INSTALL pytest Cython jinja2 psutil
-
-# TUTORIALS DEPENDENCIES
-$CONDA_INSTALL ipython ipython-notebook runipy
-
-# OPTIONAL DEPENDENCIES
-$CONDA_INSTALL scipy h5py matplotlib pyyaml beautifulsoup4
+# if future tutorials need things from the astropy channel, they can use this
+#conda install -c astropy-ci-extras python=$PYTHON_VERSION <deps here>
