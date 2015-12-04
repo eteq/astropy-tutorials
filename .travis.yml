@@ -27,6 +27,7 @@ install:
 
 script:
     - source activate test
+    - python -V
     - python prepare_deploy.py run
 
 deploy:
@@ -35,4 +36,3 @@ deploy:
     on:
         repo: astropy/astropy-tutorials
         branch: master
-        
