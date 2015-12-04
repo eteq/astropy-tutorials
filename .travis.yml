@@ -9,6 +9,7 @@ os:
 env:
     global:
         - PYTHON_VERSION=2.7
+        - NUMPY_VERSION=1.10
         - ASTROPY_VERSION=1.0.6
         - GH_REF: github.com/astropy/astropy-tutorials.git
         - secure: "NBZlEg//sDYvJikqXESLsx/WA1Nj7fAH2mJfI8ZVMnolvyjJuLdEMxxEYFP8t6U/iieSSrgUkgP94yy5Oq6iJRjj7ThGCdcjgvgWTQCzoQgEVDc5SzdJGyGs30VC+8t7GTobzMe086HX16SJRvsIumqXdmRcJjAdMCyhMUxLoUg="
