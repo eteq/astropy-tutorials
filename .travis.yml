@@ -26,6 +26,7 @@ install:
     - source ci-helpers/travis/setup_conda_$TRAVIS_OS_NAME.sh
 
 script:
+    - source activate test
     - python prepare_deploy.py run
 
 deploy:
@@ -34,3 +35,4 @@ deploy:
     on:
         repo: astropy/astropy-tutorials
         branch: master
+        
